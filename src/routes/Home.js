@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 
 function Home() {
   const [text, setText] = useState("");
@@ -9,6 +10,7 @@ function Home() {
 
   function onSubmit(e) {
     e.preventDefault();
+    setText("");
   }
 
   return (
@@ -23,4 +25,8 @@ function Home() {
   );
 }
 
-export default Home;
+function mapStateToState(state) {
+  return { toDos: state };
+}
+
+export default connect(mapStateToState)(Home);
